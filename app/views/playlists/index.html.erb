@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Playlists</h1>
+<h3>Playlists</h3>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th>Playlist name</th>
       <th>User</th>
+      <th>Number of songs</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +17,10 @@
       <tr>
         <td><%= playlist.name %></td>
         <td><%= playlist.user.name %></td>
-        <td><%= link_to 'Show', playlist %></td>
-        <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
-        <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= playlist.song.count %></td>
+        <td><%= link_to 'Show', playlist, class: 'btn btn-success btn-sm'%></td>
+        <td><%= link_to 'Edit', edit_playlist_path(playlist), class: 'btn btn-success btn-sm'%></td>
+        <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Playlist', new_playlist_path %>
+<%= link_to 'Create a New Playlist', new_playlist_path, class: 'btn btn-warning btn-lg btn-block' %>

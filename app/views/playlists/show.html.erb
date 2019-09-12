@@ -11,7 +11,8 @@
 </p>
 
 <%= form_with(model: Song.new, url: playlist_songs_path(@playlist), local: true) do |f| %>
-
+<hr>
+<h5>Add a song</h5>
 <p><%=  f.label :song %></p>
 <p><%=  f.text_field :name %></p>
 <p><%=  f.label :artist %></p>
@@ -20,11 +21,13 @@
 <% end %>
 
 <hr>
+<h5>Songs of this playlist</h5>
 <ul>
  <% @playlist.song.each do |song| %>
  <li><%= song.artist %>:
- <%= song.name %></li>
- <%= link_to 'Eliminar', playlist_song_path(@playlist, song), method: :delete, data: { confirm: 'Are you sure?' }  %>
+ <%= song.name %>
+ <%= link_to 'Eliminar', playlist_song_path(@playlist, song), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' }  %></li>
+ <br>
  <% end %>
 </ul>
 <hr>
