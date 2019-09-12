@@ -10,5 +10,23 @@
   <%= @playlist.user.name %>
 </p>
 
+<%= form_with(model: Song.new, url: playlist_songs_path(@playlist), local: true) do |f| %>
+
+<p><%=  f.label :song %></p>
+<p><%=  f.text_field :name %></p>
+<p><%=  f.label :artist %></p>
+<p><%=  f.text_field :artist %></p>
+<p><%= f.submit :enviar %></p>
+<% end %>
+
+<hr>
+<ul>
+ <% @playlist.song.each do |song| %>
+ <li><%= song.artist %>:
+ <%= song.name %></li>
+ <%= link_to 'Eliminar', playlist_song_path(@playlist, song), method: :delete, data: { confirm: 'Are you sure?' }  %>
+ <% end %>
+</ul>
+<hr>
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
